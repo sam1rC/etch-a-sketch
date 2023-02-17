@@ -1,8 +1,8 @@
-const gridSizeValueText = document.getElementById('gridSizeValueText');
+const gridSizeText = document.getElementById('gridSizeText');
 const gridSize = document.getElementById('gridSize');
-gridSize.onmousemove = (e)=> {updateGridSizeValueText(e.target.value)};
+gridSize.onmousemove = (e)=> {updateGridSizeText(e.target.value)};
 
-function updateGridSizeValueText(value)
+function updateGridSizeText(value)
 {
     gridSizeValueText.textContent = `${value} x ${value}`;
 }
