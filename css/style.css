@@ -11,12 +11,18 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 .container{
     width: 300px;
     height: 300px;
     border: 1px solid black;
+}
+
+.gridTools{
+    display: flex;
+    gap: 1rem;
 }
 
 @media (min-width:640px) {
