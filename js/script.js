@@ -4,7 +4,7 @@ const grid = document.querySelector('.container');
 
 
 gridSize.addEventListener('mousemove',(e)=>{updateGridSizeText(e.target.value)});
-gridSize.addEventListener('mouseup',(e)=>{upgradeGrid(e.target.value)});
+gridSize.addEventListener('mouseup',(e)=>{upgradeGrid(e.target.value,grid)});
 
 
 function updateGridSizeText(value)
@@ -12,22 +12,22 @@ function updateGridSizeText(value)
     gridSizeText.textContent = `${value} x ${value}`;
 }
 
-function upgradeGrid(value)
+function upgradeGrid(value,container)
 {   
-    removeAllChilds();
+    removeAllChilds(container);
     for(let i=0;i<value*value;i++)
     {
         const gridChild = document.createElement('div');
         gridChild.setAttribute('style',`width: calc(100%/${value});height: calc(100%/${value}); border: 1px solid red;`);
-        grid.appendChild(gridChild);
+        container.appendChild(gridChild);
     }
 }
 
 
-function removeAllChilds()
+function removeAllChilds(parent)
 {
-    while(grid.firstChild)
+    while(parent.firstChild)
     {
-        grid.removeChild(grid.firstChild);
+        parent.removeChild(parent.firstChild);
     }
 }
