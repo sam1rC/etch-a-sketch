@@ -1,11 +1,19 @@
 const gridSizeText = document.getElementById('gridSizeText');
 const gridSize = document.getElementById('gridSize');
 const grid = document.querySelector('.container');
+const colorPicker = document.getElementById('colorPicker');
+
+
+window.addEventListener('DOMContentLoaded',()=>{
+    updateGridSizeText(gridSize.value);
+    upgradeGrid(gridSize.value,grid);
+})
 
 
 gridSize.addEventListener('mousemove',(e)=>{updateGridSizeText(e.target.value)});
 gridSize.addEventListener('mouseup',(e)=>{upgradeGrid(e.target.value,grid)});
-
+colorPicker.addEventListener('input', (e)=>{});
+colorPicker.addEventListener("change",(e)=>{});
 
 function updateGridSizeText(value)
 {
@@ -19,6 +27,7 @@ function upgradeGrid(value,container)
     {
         const gridChild = document.createElement('div');
         gridChild.setAttribute('style',`width: calc(100%/${value});height: calc(100%/${value}); border: 1px solid red;`);
+        gridChild.addEventListener('mouseover', changeColor);
         container.appendChild(gridChild);
     }
 }
@@ -30,4 +39,10 @@ function removeAllChilds(parent)
     {
         parent.removeChild(parent.firstChild);
     }
+}
+
+
+function changeColor()
+{
+    this.style.backgroundColor = `${colorPicker.value}`;
 }
