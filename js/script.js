@@ -2,7 +2,7 @@ const gridSizeText = document.getElementById('gridSizeText');
 const gridSize = document.getElementById('gridSize');
 const grid = document.querySelector('.container');
 const colorPicker = document.getElementById('colorPicker');
-
+const eraser = document.getElementById('eraser');
 
 window.addEventListener('DOMContentLoaded',()=>{
     updateGridSizeText(gridSize.value);
@@ -12,8 +12,8 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 gridSize.addEventListener('mousemove',(e)=>{updateGridSizeText(e.target.value)});
 gridSize.addEventListener('mouseup',(e)=>{upgradeGrid(e.target.value,grid)});
-colorPicker.addEventListener('input', (e)=>{});
-colorPicker.addEventListener("change",(e)=>{});
+
+eraser.addEventListener('click', ()=>{colorPicker.value = "#FFFFFF"});
 
 function updateGridSizeText(value)
 {
