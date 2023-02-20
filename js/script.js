@@ -5,12 +5,24 @@ const colorPicker = document.getElementById('colorPicker');
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 const mode = document.getElementById('mode');
-let click = true;
+let click = false;
 
 window.addEventListener('DOMContentLoaded',()=>{
     updateGridSizeText(gridSize.value);
     upgradeGrid(gridSize.value,grid);
-    mode.textContent = "Mode: Coloring";
+    mode.textContent = "Mode: Not Coloring";
+})
+
+document.querySelector('.container').addEventListener('click',(e)=>{   
+    click = !click;
+    if(click)
+    {
+        mode.textContent = "Mode: Coloring";
+    }
+    else
+    {
+        mode.textContent = "Mode: Not Coloring";
+    }       
 })
 
 
@@ -20,6 +32,8 @@ gridSize.addEventListener('mouseup',(e)=>{upgradeGrid(e.target.value,grid)});
 eraserBtn.addEventListener('click', ()=>{colorPicker.value = "#FFFFFF"});
 
 clearBtn.addEventListener('click',()=>{clearGrid()});
+
+
 
 function updateGridSizeText(value)
 {
@@ -62,19 +76,3 @@ function clearGrid()
     let table = document.querySelectorAll("div");
     table.forEach((square) => square.style.backgroundColor = "#FFFFFF");
 }
-
-document.querySelector('body').addEventListener('click',(e)=>{
-    if(e.target.tagName != "BUTTON")
-    {
-        click = !click;
-        if(click)
-        {
-            mode.textContent = "Mode: Coloring";
-        }
-        else
-        {
-            mode.textContent = "Mode: Not Coloring";
-        }
-    }
-    
-})
