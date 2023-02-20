@@ -4,11 +4,13 @@ const grid = document.querySelector('.container');
 const colorPicker = document.getElementById('colorPicker');
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
-
+const mode = document.getElementById('mode');
+let click = true;
 
 window.addEventListener('DOMContentLoaded',()=>{
     updateGridSizeText(gridSize.value);
     upgradeGrid(gridSize.value,grid);
+    mode.textContent = "Mode: Coloring";
 })
 
 
@@ -48,7 +50,11 @@ function removeAllChilds(parent)
 
 function changeColor()
 {
-    this.style.backgroundColor = `${colorPicker.value}`;
+    if(click)
+    {
+        this.style.backgroundColor = `${colorPicker.value}`;
+    }
+    
 }
 
 function clearGrid()
@@ -56,3 +62,19 @@ function clearGrid()
     let table = document.querySelectorAll("div");
     table.forEach((square) => square.style.backgroundColor = "#FFFFFF");
 }
+
+document.querySelector('body').addEventListener('click',(e)=>{
+    if(e.target.tagName != "BUTTON")
+    {
+        click = !click;
+        if(click)
+        {
+            mode.textContent = "Mode: Coloring";
+        }
+        else
+        {
+            mode.textContent = "Mode: Not Coloring";
+        }
+    }
+    
+})
