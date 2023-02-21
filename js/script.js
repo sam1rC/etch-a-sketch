@@ -6,6 +6,7 @@ const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 const mode = document.getElementById('mode');
 const randomBtn = document.getElementById('randomBtn');
+const randomText = document.getElementById('randomText');
 let click = false;
 let random = false;
 
@@ -13,6 +14,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     updateGridSizeText(gridSize.value);
     upgradeGrid(gridSize.value,grid);
     mode.textContent = "Mode: Not Coloring";
+    randomText.textContent = "Random: Off"
 })
 
 document.querySelector('.container').addEventListener('click',(e)=>{   
@@ -35,7 +37,17 @@ eraserBtn.addEventListener('click', ()=>{colorPicker.value = "#FFFFFF"});
 
 clearBtn.addEventListener('click',()=>{clearGrid()});
 
-randomBtn.addEventListener('click',()=>{random = !random});
+randomBtn.addEventListener('click',()=>{
+    random = !random
+    if(random)
+    {
+        randomText.textContent = "Random: On";
+    }
+    else
+    {
+        randomText.textContent = "Random: Off";
+    }
+});
 
 
 function updateGridSizeText(value)
