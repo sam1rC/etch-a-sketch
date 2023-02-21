@@ -5,7 +5,9 @@ const colorPicker = document.getElementById('colorPicker');
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 const mode = document.getElementById('mode');
+const randomBtn = document.getElementById('randomBtn');
 let click = false;
+let random = false;
 
 window.addEventListener('DOMContentLoaded',()=>{
     updateGridSizeText(gridSize.value);
@@ -33,6 +35,7 @@ eraserBtn.addEventListener('click', ()=>{colorPicker.value = "#FFFFFF"});
 
 clearBtn.addEventListener('click',()=>{clearGrid()});
 
+randomBtn.addEventListener('click',()=>{random = !random});
 
 
 function updateGridSizeText(value)
@@ -65,8 +68,16 @@ function removeAllChilds(parent)
 function changeColor()
 {
     if(click)
-    {
-        this.style.backgroundColor = `${colorPicker.value}`;
+    {     
+        if(random)
+        {
+            this.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+        }
+        else
+        {
+            this.style.backgroundColor = `${colorPicker.value}`;
+        }
+        
     }
     
 }
